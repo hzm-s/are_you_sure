@@ -7,7 +7,7 @@ require "are_you_sure/version"
 Gem::Specification.new do |s|
   s.name        = "are_you_sure"
   s.version     = AreYouSure::VERSION
-  s.authors     = ["TODO: Your name"]
+  s.authors     = ["haazime"]
   s.email       = ["TODO: Your email"]
   s.homepage    = "TODO"
   s.summary     = "TODO: Summary of AreYouSure."
@@ -18,4 +18,6 @@ Gem::Specification.new do |s|
   s.add_dependency "rails", "~> 4.0.2"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "rspec-rails"
+  s.add_development_dependency "capybara"
 end
