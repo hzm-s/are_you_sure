@@ -27,16 +27,32 @@ module AreYouSure
       field_value = @object.send(method)
       case original_field
       when /collection/
-        options[0].detect {|i| i.send(options[1]) == field_value }.send(options[2])
+        collection_field_value(field_value, *options)
       when /date|time/
-        field_value
+        datetime_field_value(field_value, *options)
       when /select/
-        options.flatten.each_slice(2).to_a.detect {|i| i[1] == field_value }[0]
+        select_field_value(field_value, *options)
       when /check/
-        field_value ? options[1] || 'checked' : options[2] || ''
+        check_field_value(field_value, *options)
       else
         field_value
       end
+    end
+
+    def collection_field_value(selected, choices, value_method, text_method, *options)
+      choices.detect {|c| c.send(value_method) == selected }.send(text_method)
+    end
+
+    def datetime_field_value(datetime, *options)
+      datetime
+    end
+
+    def select_field_value(selected, *options)
+      options.flatten.each_slice(2).to_a.detect {|i| i[1] == selected }[0]
+    end
+
+    def check_field_value(checked, *options)
+      checked ? options[1] || 'checked' : options[2] || ''
     end
   end
 end
