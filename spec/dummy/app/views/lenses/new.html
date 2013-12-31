@@ -1,0 +1,34 @@
+<%= are_you_sure_form_for @lens do |f| -%>
+  <%= f.confirmation %>
+  <div>
+    <%= f.label :mfr_id, 'MFR' %>
+    <%= f.select_or_confirm :mfr_id, MFR.all.collect {|x| [x.name, x.id] }, { class: :select } %>
+  </div>
+  <div>
+    <%= f.label :mount_id %>
+    <%= f.collection_radio_buttons_or_confirm :mount_id, Mount.all, :id, :name, { class: :radio } %>
+  </div>
+  <div>
+    <%= f.label :name %>
+    <%= f.text_field_or_confirm :name, { class: :text } %>
+  </div>
+  <div>
+    <%= f.label :mm, 'mm' %>
+    <%= f.number_field_or_confirm :mm, { class: :text } %>
+  </div>
+  <div>
+    <%= f.label :f, 'f' %>
+    <%= f.number_field_or_confirm :f, { class: :text } %>
+  </div>
+  <div>
+    <%= f.label :close_up %>
+    <%= f.check_box_or_confirm :close_up, { class: :check } %>
+  </div>
+  <div>
+    <%= f.label :note %>
+    <%= f.text_field_or_confirm :note, { class: :text_area } %>
+  </div>
+  <div>
+    <%= f.submit_or_confirm %>
+  </div>
+<% end -%>
