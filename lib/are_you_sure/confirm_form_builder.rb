@@ -31,6 +31,8 @@ module AreYouSure
         options[0].detect {|i| i.send(options[1]) == field_value }.send(options[2])
       when /select/
         options.flatten.each_slice(2).to_a.detect {|i| i[1] == field_value }[0]
+      when /check/
+        field_value ? options[1] || 'checked' : options[2] || ''
       else
         field_value
       end
