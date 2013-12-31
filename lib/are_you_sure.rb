@@ -9,5 +9,6 @@ module AreYouSure
 
   eager_autoload do
     autoload :ModelWithConfirmation
+    autoload :BaseFormBuilder
   end
 end

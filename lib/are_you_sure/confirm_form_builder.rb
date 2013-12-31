@@ -1,9 +1,8 @@
 module AreYouSure
-  class ConfirmFormBuilder < ActionView::Helpers::FormBuilder
+  class ConfirmFormBuilder < BaseFormBuilder
 
     def confirmation
-      @template.hidden_field_tag('confirmed', true) + 
-      @template.hidden_field_tag('form_mode', 'confirm')
+      confirmed(true) + form_mode('confirm')
     end
 
     def confirm_field(original_field, method, *options)
@@ -17,9 +16,9 @@ module AreYouSure
     end
 
     def method_missing(method, *args, &block)
-      original_field = method.to_s.scan(/^(.+)_or_confirm$/).flatten.first
-      super unless respond_to?(original_field.to_sym)
-      send(:confirm_field, original_field, *args)
+      do_if_respond_to_original_method(method) do |original_method|
+        send(:confirm_field, original_method, *args)
+      end
     end
 
   private
