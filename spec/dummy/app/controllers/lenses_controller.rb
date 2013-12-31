@@ -20,7 +20,7 @@ class LensesController < ApplicationController
 private
 
   def lens_params
-    params.require(:lens).permit(:mfr_id, :mount_id, :name, :mm, :f, :close_up, :note)
+    params.require(:lens).permit(:registered_at, :mfr_id, :mount_id, :name, :mm, :f, :close_up, :note)
   end
 
   def confirmation_params

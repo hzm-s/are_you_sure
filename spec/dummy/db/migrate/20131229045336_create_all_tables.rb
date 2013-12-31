@@ -9,6 +9,7 @@ class CreateAllTables < ActiveRecord::Migration
     end
 
     create_table :lenses do |t|
+      t.datetime :registered_at
       t.references :mfr
       t.references :mount
       t.string  :name

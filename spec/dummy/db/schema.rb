@@ -14,13 +14,14 @@
 ActiveRecord::Schema.define(version: 20131229045336) do
 
   create_table "lenses", force: true do |t|
-    t.integer "mfr_id"
-    t.integer "mount_id"
-    t.string  "name"
-    t.integer "mm"
-    t.decimal "f",        precision: 4, scale: 2
-    t.boolean "close_up"
-    t.text    "note"
+    t.datetime "registered_at"
+    t.integer  "mfr_id"
+    t.integer  "mount_id"
+    t.string   "name"
+    t.integer  "mm"
+    t.decimal  "f",             precision: 4, scale: 2
+    t.boolean  "close_up"
+    t.text     "note"
   end
 
   create_table "mfrs", force: true do |t|

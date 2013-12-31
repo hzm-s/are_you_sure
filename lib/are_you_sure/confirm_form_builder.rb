@@ -29,6 +29,8 @@ module AreYouSure
       case original_field
       when /collection/
         options[0].detect {|i| i.send(options[1]) == field_value }.send(options[2])
+      when /date|time/
+        field_value
       when /select/
         options.flatten.each_slice(2).to_a.detect {|i| i[1] == field_value }[0]
       when /check/
