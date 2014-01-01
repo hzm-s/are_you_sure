@@ -1,0 +1,34 @@
+<table>
+  <tr>
+    <td>Registered at</td>
+    <td><%= @lens.registered_at %></td>
+  </tr>
+  <tr>
+    <td>MFR</td>
+    <td><%= MFR.find(@lens.mfr_id).name %></td>
+  </tr>
+  <tr>
+    <td>Mount</td>
+    <td><%= Mount.find(@lens.mount_id).name %></td>
+  </tr>
+  <tr>
+    <td>Name</td>
+    <td><%= @lens.name %></td>
+  </tr>
+  <tr>
+    <td>mm</td>
+    <td><%= @lens.mm %></td>
+  </tr>
+  <tr>
+    <td>f</td>
+    <td><%= @lens.f %></td>
+  </tr>
+  <tr>
+    <td>Close up</td>
+    <td><%= @lens.close_up ? 'available' : 'unavailable' %></td>
+  </tr>
+  <tr>
+    <td>Note</td>
+    <td><%= @lens.note %></td>
+  </tr>
+</table>

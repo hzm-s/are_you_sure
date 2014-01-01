@@ -13,14 +13,14 @@ feature 'Confirm' do
     end
 
     scenario { expect(@lens).to have_confirm_message }
-    scenario { expect(@lens).to have_registered_at_confirmation }
-    scenario { expect(@lens).to have_mfr_name_confirmation }
-    scenario { expect(@lens).to have_mount_name_confirmation }
-    scenario { expect(@lens).to have_name_confirmation }
-    scenario { expect(@lens).to have_mm_confirmation }
-    scenario { expect(@lens).to have_f_confirmation }
-    scenario { expect(@lens).to have_close_up_confirmation }
-    scenario { expect(@lens).to have_note_confirmation }
+    scenario { expect(@lens).to have_registered_at }
+    scenario { expect(@lens).to have_mfr_name }
+    scenario { expect(@lens).to have_mount_name }
+    scenario { expect(@lens).to have_name }
+    scenario { expect(@lens).to have_mm }
+    scenario { expect(@lens).to have_f }
+    scenario { expect(@lens).to have_close_up }
+    scenario { expect(@lens).to have_note }
   end
 
   context 'Input invalid attributes' do
