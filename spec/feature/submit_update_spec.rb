@@ -1,20 +1,28 @@
 require 'spec_helper'
 
-feature 'Submit Create' do
+feature 'Submit Update' do
   let(:lens) do
-    LensOnPage.new(
-      Time.current,
-      MFR.find_by(name: 'Leica'),
-      Mount.find_by(name: 'Leica M'),
-      'Summilux', 35, 1.4, false, '1st'
+    Lens.create(
+      registered_at: Time.current,
+      mfr_id: MFR.find_by(name: 'Leica').id,
+      mount_id: Mount.find_by(name: 'Leica L').id,
+      name: 'Summitar',
+      mm: 50,
+      f: 2.0,
+      close_up: false,
+      note: '荳ｸ邨槭ｊ'
     )
+    LensOnPage.edit
+  end
+
+  background do
+    lens.name = 'Summicron'
+    lens.note = '8 elements'
+    lens.confirm
   end
 
   context 'confirm inputted content' do
-    background do
-      lens.confirm
-      lens.create
-    end
+    background { lens.update }
 
     scenario { expect(lens).to have_registered_at }
     scenario { expect(lens).to have_mfr_name }
@@ -27,11 +35,8 @@ feature 'Submit Create' do
   end
 
   context 'cancel inputted content' do
-    background do
-      lens.confirm
-      lens.cancel
-    end
+    background { lens.cancel }
 
-    scenario { expect(lens).to have_new_form }
+    scenario { expect(lens).to have_edit_form }
   end
 end

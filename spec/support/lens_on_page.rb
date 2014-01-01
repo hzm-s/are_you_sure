@@ -40,6 +40,10 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
     click_button 'Create'
   end
 
+  def update
+    click_button 'Update'
+  end
+
   def cancel
     click_link 'Cancel'
   end
