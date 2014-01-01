@@ -9,4 +9,8 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
   def close_up_state
     close_up ? 'available' : 'unavailable'
   end
+
+  def error_on?(name)
+    all('li').collect {|li| li.text }.any? {|t| t =~ /#{name}/i }
+  end
 end

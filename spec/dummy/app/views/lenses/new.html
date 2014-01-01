@@ -1,4 +1,14 @@
 <%= are_you_sure_form_for @lens do |f| -%>
+  <%- if @lens.errors.any? %>
+    <div id="errorExplanation">
+      <h2><%= @lens.errors.count %> errors prohibited this lens from being saved:</h2>
+      <ul>
+      <%- @lens.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <%- end %>
+      </ul>
+    </div>
+  <%- end %>
   <%= f.confirmation %>
   <div>
     <%= f.label :registered_at %>

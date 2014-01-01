@@ -11,8 +11,7 @@ module AreYouSure
     end
 
     def save
-      return false unless @model.valid?
-      return false unless confirmed?
+      @model.save and confirmed?
     end
 
     def confirmed?
@@ -20,11 +19,16 @@ module AreYouSure
     end
 
     def form_builder_class
-      if @confirmed.nil?
+      if @confirmed.nil? or @model.errors.any?
         InputFormBuilder
       else
         ConfirmFormBuilder
       end
+    end
+
+    def method_missing(method, *args, &block)
+      return super unless @model.respond_to?(method)
+      @model.send(method, *args, &block)
     end
   end
 end

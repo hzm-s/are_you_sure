@@ -5,6 +5,10 @@ module LensConfirmationHelper
     has_content?(/Registered at\s+#{registered_datetime}/)
   end
 
+  def mfr_name_confirmed?
+    has_content?(/MFR\s#{mfr.name}/)
+  end
+
   def mount_name_confirmed?
     has_content?(/Mount\s+#{mount.name}/)
   end

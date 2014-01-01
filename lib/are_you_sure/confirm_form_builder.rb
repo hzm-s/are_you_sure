@@ -40,6 +40,7 @@ module AreYouSure
     end
 
     def collection_field_value(selected, choices, value_method, text_method, *options)
+      return '' unless selected
       choices.detect {|c| c.send(value_method) == selected }.send(text_method)
     end
 
@@ -48,6 +49,7 @@ module AreYouSure
     end
 
     def select_field_value(selected, *options)
+      return '' unless selected
       options.flatten.each_slice(2).to_a.detect {|i| i[1] == selected }[0]
     end
 
