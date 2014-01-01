@@ -1,31 +1,31 @@
 module LensConfirmationHelper
   include Capybara::DSL
 
-  def confirm_registered_at?
+  def registered_at_confirmed?
     has_content?(/Registered at\s+#{registered_datetime}/)
   end
 
-  def confirm_mount_name?
+  def mount_name_confirmed?
     has_content?(/Mount\s+#{mount.name}/)
   end
 
-  def confirm_name?
+  def name_confirmed?
     has_content?(/Name\s+#{name}/)
   end
 
-  def confirm_mm?
+  def mm_confirmed?
     has_content?(/mm\s+#{mm}/)
   end
 
-  def confirm_f?
+  def f_confirmed?
     has_content?(/f\s+#{f}/)
   end
 
-  def confirm_close_up?
+  def close_up_confirmed?
     has_content?(/Close up\s+#{close_up_state}/)
   end
 
-  def confirm_note?
+  def note_confirmed?
     has_content?(/Note\s+#{note}/)
   end
 end
