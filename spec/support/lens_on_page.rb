@@ -44,7 +44,7 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
     click_link 'Cancel'
   end
 
-  def has_form?
+  def has_new_form?
     has_css?('form#new_lens')
   end
 
