@@ -32,6 +32,6 @@ feature 'Submit' do
       lens.cancel
     end
 
-    scenario { expect(lens).to have_form }
+    scenario { expect(lens).to have_new_form }
   end
 end

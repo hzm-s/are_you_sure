@@ -29,6 +29,7 @@ feature 'Confirm Create' do
       @lens.confirm
     end
 
+    scenario { expect(@lens).to have_new_form }
     scenario { expect(@lens).to have_error_on(:mount) }
     scenario { expect(@lens).to have_error_on(:name) }
     scenario { expect(@lens).to have_error_on(:mm) }
