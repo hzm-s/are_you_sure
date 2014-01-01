@@ -11,11 +11,13 @@ module AreYouSure
     end
 
     def save
-      @model.save and confirmed?
+      return false unless @model.valid?
+      return false unless confirmed?
+      @model.save
     end
 
     def confirmed?
-      @confirmed == true
+      @confirmed == 'confirmed'
     end
 
     def form_builder_class

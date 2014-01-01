@@ -2,14 +2,14 @@ module AreYouSure
   class ConfirmFormBuilder < BaseFormBuilder
 
     def confirmation(options={})
-      confirmed(true) + form_mode('confirm') +
+      confirmed(true) +
       @template.content_tag(:p, options[:message] || 'Are You Sure?')
     end
 
     def confirm_field(original_field, method, *options)
       field_value = fetch_field_value(original_field, method, *options)
       @template.content_tag(:p, field_value) +
-      @template.hidden_field_tag(method, field_value)
+      @template.hidden_field(@object_name, method)
     end
 
     def submit_or_confirm(values={})

@@ -1,12 +1,8 @@
 module AreYouSure
   class BaseFormBuilder < ActionView::Helpers::FormBuilder
 
-    def confirmed(true_or_false)
-      @template.hidden_field_tag(:confirmed, true_or_false)
-    end
-
-    def form_mode(mode)
-      @template.hidden_field_tag(:form_mode, mode)
+    def confirmed(confirmed)
+      @template.hidden_field_tag(:confirmed, confirmed ? 'confirmed' : '')
     end
 
   private
