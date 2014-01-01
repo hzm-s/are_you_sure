@@ -16,6 +16,13 @@ module AreYouSure
       @model.save
     end
 
+    def update_attributes(attributes)
+      @model.attributes = attributes
+      return false unless @model.valid?
+      return false unless confirmed?
+      @model.update_attributes(attributes)
+    end
+
     def confirmed?
       @confirmed == 'confirmed'
     end
