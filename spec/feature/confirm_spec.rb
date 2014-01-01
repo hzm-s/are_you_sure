@@ -12,14 +12,15 @@ feature 'Confirm' do
       @lens.confirm
     end
 
-    scenario { expect(@lens).to be_registered_at_confirmed }
-    scenario { expect(@lens).to be_mfr_name_confirmed }
-    scenario { expect(@lens).to be_mount_name_confirmed }
-    scenario { expect(@lens).to be_name_confirmed }
-    scenario { expect(@lens).to be_mm_confirmed }
-    scenario { expect(@lens).to be_f_confirmed }
-    scenario { expect(@lens).to be_close_up_confirmed }
-    scenario { expect(@lens).to be_note_confirmed }
+    scenario { expect(@lens).to have_confirm_message }
+    scenario { expect(@lens).to have_registered_at_confirmation }
+    scenario { expect(@lens).to have_mfr_name_confirmation }
+    scenario { expect(@lens).to have_mount_name_confirmation }
+    scenario { expect(@lens).to have_name_confirmation }
+    scenario { expect(@lens).to have_mm_confirmation }
+    scenario { expect(@lens).to have_f_confirmation }
+    scenario { expect(@lens).to have_close_up_confirmation }
+    scenario { expect(@lens).to have_note_confirmation }
   end
 
   context 'Input invalid attributes' do
@@ -28,10 +29,10 @@ feature 'Confirm' do
       @lens.confirm
     end
 
-    scenario { expect(@lens).to be_error_on(:mount) }
-    scenario { expect(@lens).to be_error_on(:name) }
-    scenario { expect(@lens).to be_error_on(:mm) }
-    scenario { expect(@lens).to be_error_on(:f) }
-    scenario { expect(@lens).to be_error_on(:note) }
+    scenario { expect(@lens).to have_error_on(:mount) }
+    scenario { expect(@lens).to have_error_on(:name) }
+    scenario { expect(@lens).to have_error_on(:mm) }
+    scenario { expect(@lens).to have_error_on(:f) }
+    scenario { expect(@lens).to have_error_on(:note) }
   end
 end

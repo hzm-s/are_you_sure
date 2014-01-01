@@ -1,7 +1,7 @@
 module AreYouSure
   class InputFormBuilder < BaseFormBuilder
 
-    def confirmation
+    def confirmation(options)
       confirmed(false) + form_mode('confirm')
     end
 

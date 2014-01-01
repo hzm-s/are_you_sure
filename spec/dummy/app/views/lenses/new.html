@@ -9,7 +9,7 @@
       </ul>
     </div>
   <%- end %>
-  <%= f.confirmation %>
+  <%= f.confirmation message: 'この内容でよろしいですか?' %>
   <div>
     <%= f.label :registered_at %>
     <%= f.datetime_select_or_confirm :registered_at, { order: [:year, :month, :day], use_month_numbers: true }, { class: :select } %>

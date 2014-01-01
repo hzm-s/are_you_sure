@@ -10,7 +10,7 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
     close_up ? 'available' : 'unavailable'
   end
 
-  def error_on?(name)
+  def has_error_on?(name)
     all('li').collect {|li| li.text }.any? {|t| t =~ /#{name}/i }
   end
 end
