@@ -17,4 +17,12 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
   def create
     click_button 'Create'
   end
+
+  def cancel
+    click_link 'Cancel'
+  end
+
+  def has_form?
+    has_css?('form#new_lens')
+  end
 end

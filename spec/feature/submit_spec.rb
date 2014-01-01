@@ -25,4 +25,13 @@ feature 'Submit' do
     scenario { expect(lens).to have_close_up }
     scenario { expect(lens).to have_note }
   end
+
+  context 'cancel inputted content' do
+    background do
+      lens.confirm
+      lens.cancel
+    end
+
+    scenario { expect(lens).to have_form }
+  end
 end

@@ -13,7 +13,8 @@ module AreYouSure
     end
 
     def submit_or_confirm(values={})
-      submit(values[:submit])
+      submit(values[:submit]) +
+      @template.link_to(values[:cancel] || 'Cancel', :back)
     end
 
     def method_missing(method, *args, &block)
