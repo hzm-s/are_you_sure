@@ -2,7 +2,6 @@ module LensInputtable
   include Capybara::DSL
 
   def confirm
-    visit 'lenses/new'
     if registered_at
       select registered_at.year,          from: 'lens[registered_at(1i)]'
       select registered_at.month,         from: 'lens[registered_at(2i)]'

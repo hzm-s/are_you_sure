@@ -1,6 +1,28 @@
 class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :close_up, :note)
+  extend Capybara::DSL
   include LensInputtable
   include LensConfirmationHelper
+
+  def self.edit
+    lens = Lens.last
+    new(
+      lens.registered_at,
+      MFR.find(lens.mfr_id),
+      Mount.find(lens.mount_id),
+      lens.name,
+      lens.mm,
+      lens.f,
+      lens.close_up,
+      lens.note
+    ).tap do |me|
+      visit "#{lens.id}/edit"
+    end
+  end
+
+  def initialize(*args)
+    super
+    visit "lenses/new"
+  end
 
   def registered_datetime
     registered_at.strftime("%Y-%m-%d %H:%M")
@@ -24,5 +46,9 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
 
   def has_form?
     has_css?('form#new_lens')
+  end
+
+  def has_edit_form?
+    has_css?('form#edit_lens')
   end
 end
