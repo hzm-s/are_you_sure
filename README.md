@@ -1,6 +1,12 @@
 # AreYouSure
 
-AreYouSure provides confirm action when create or update resource, Without to add routing and action.
+This plug-in inserts a confirmation page before creation or updating action.
+
+And therefore, it is not necessary to add new routing(action) or to modify a model. 
+
+1. show form
+2. show confirm page (*)
+3. create or update a model
 
 ## Installation
 
