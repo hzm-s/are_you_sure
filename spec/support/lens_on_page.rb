@@ -1,4 +1,4 @@
-class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :close_up, :note)
+class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :close_up, :note, :id)
   extend Capybara::DSL
   include LensInputtable
   include LensConfirmationHelper
@@ -13,7 +13,8 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
       lens.mm,
       lens.f,
       lens.close_up,
-      lens.note
+      lens.note,
+      lens.id
     ).tap do |me|
       visit "#{lens.id}/edit"
     end
@@ -53,6 +54,6 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
   end
 
   def has_edit_form?
-    has_css?('form#edit_lens')
+    has_css?("form#edit_lens_#{id}")
   end
 end
