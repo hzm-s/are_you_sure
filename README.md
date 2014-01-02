@@ -1,6 +1,6 @@
 # AreYouSure
 
-TODO: Write a gem description
+AreYouSure can confirm when create or update action without add routing and action.
 
 ## Installation
 
