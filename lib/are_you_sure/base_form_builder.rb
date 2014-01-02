@@ -9,15 +9,23 @@ module AreYouSure
 
     def do_if_respond_to_original_method(method)
       original_method = extract_original_method(method)
-      unless original_method and respond_to?(original_method)
-        super
-      else
+      if respond_to_original_method?(original_method)
         yield(original_method)
+      else
+        super
       end
     end
 
+    def respond_to_missing?(method, include_private=false)
+      respond_to_original_method?(extract_original_method(method)) || super
+    end
+
+    def respond_to_original_method?(original_method)
+      original_method && respond_to?(original_method)
+    end
+
     def extract_original_method(method)
-      method.to_s.scan(/^(.+)_or_confirm$/).flatten.first
+      method.to_s[/^(.+)_or_confirm$/, 1]
     end
   end
 end
