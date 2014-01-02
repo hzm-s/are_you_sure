@@ -10,8 +10,8 @@ class LensesController < ApplicationController
 
   def create
     @lens = confirm_for Lens.new(lens_params)
-    if @lens.save
-      redirect_to lens_path(@lens.model)
+    if @lens.save_if_confirmed
+      redirect_to lens_path(@lens)
     else
       render action: :new
     end
@@ -23,8 +23,8 @@ class LensesController < ApplicationController
 
   def update
     @lens = confirm_for Lens.find(params[:id])
-    if @lens.update_attributes(lens_params)
-      redirect_to lens_path(@lens.model)
+    if @lens.update_attributes_if_confirmed(lens_params)
+      redirect_to lens_path(@lens)
     else
       render action: :edit
     end
