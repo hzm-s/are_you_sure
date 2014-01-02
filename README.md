@@ -50,7 +50,7 @@ end
 
 ### View
 
-```ruby
+```erb
 <%= are_you_sure_form_for @todo do |f| %>
   <%= f.confirmation message: 'CONFIRM MESSAGE' %>
   
