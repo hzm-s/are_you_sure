@@ -8,10 +8,10 @@ Gem::Specification.new do |s|
   s.name        = "are_you_sure"
   s.version     = AreYouSure::VERSION
   s.authors     = ["haazime"]
-  s.email       = ["TODO: Your email"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of AreYouSure."
-  s.description = "TODO: Description of AreYouSure."
+  s.email       = ["h4zime@gmail.com"]
+  s.homepage    = "https://github.com/haazime"
+  s.summary     = "Add confirmation to Rails"
+  s.description = ""
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
