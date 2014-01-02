@@ -33,7 +33,7 @@ end
     
 def create
   @todo = confirm_for Todo.new(todo_params)
-  if @todo.save
+  if @todo.save_if_confirmed
     redirecto_to @todo
   else
     render action: :new
@@ -46,7 +46,7 @@ end
     
 def update
   @todo = confirm_for Todo.find(params[:id])
-  if @todo.update_attributes(todo_params)
+  if @todo.update_attributes_if_confirmed(todo_params)
     redirect_to @todo
   else
     render action: :edit
