@@ -11,16 +11,20 @@ module AreYouSure
     end
 
     def save
-      return false unless @model.valid?
-      return false unless confirmed?
-      @model.save
+      do_if_valid_and_confirmed do
+        @model.save
+      end
     end
 
     def update_attributes(attributes)
       @model.attributes = attributes
-      return false unless @model.valid?
-      return false unless confirmed?
-      @model.update_attributes(attributes)
+      do_if_valid_and_confirmed do
+        @model.update_attributes(attributes)
+      end
+    end
+
+    def update_attribute(name, value)
+      update_attributes(name => value)
     end
 
     def confirmed?
@@ -45,6 +49,14 @@ module AreYouSure
 
     def respond_to_missing?(method, include_private=false)
       @model.respond_to?(method) || super
+    end
+
+  private
+
+    def do_if_valid_and_confirmed
+      return false unless @model.valid?
+      return false unless confirmed?
+      yield
     end
   end
 end
