@@ -6,11 +6,11 @@ require 'are_you_sure/action_view_extenstions/form_helper'
 module AreYouSure
   extend ActiveSupport::Autoload
 
-  autoload :InputFormBuilder
-  autoload :ConfirmFormBuilder
+  autoload :ModelWithConfirmation
 
-  eager_autoload do
-    autoload :ModelWithConfirmation
+  autoload_under 'FormBuilders' do
     autoload :BaseFormBuilder
+    autoload :InputFormBuilder
+    autoload :ConfirmFormBuilder
   end
 end
