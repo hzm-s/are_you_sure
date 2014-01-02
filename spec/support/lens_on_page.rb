@@ -38,15 +38,15 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
   end
 
   def create
-    click_button 'Create'
+    click_button 'Create a Lens'
   end
 
   def update
-    click_button 'Update'
+    click_button 'Update a Lens'
   end
 
   def cancel
-    click_link 'Cancel'
+    click_link '戻る'
   end
 
   def has_new_form?

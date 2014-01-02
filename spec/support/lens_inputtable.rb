@@ -15,6 +15,6 @@ module LensInputtable
     fill_in 'lens[mm]',   with: mm
     fill_in 'lens[f]',    with: f
     fill_in 'lens[note]', with: note
-    click_button 'Confirm'
+    click_button '確認画面へ'
   end
 end
