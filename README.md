@@ -5,7 +5,7 @@ This plug-in inserts a confirmation page before creation or updating action.
 And therefore, it is not necessary to add new routing(action) or to modify a model.
 
 1. show form
-2. _show confirm page_
+2. __show confirm page__
 3. create or update a model
 
 ## Installation
@@ -31,8 +31,6 @@ $ gem install are_you_sure
 ## Usage
 
 ### Controller
-
-Use __confirm_for__ with model construnction.
 
 ```ruby
 def new
