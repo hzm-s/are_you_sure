@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = AreYouSure::VERSION
   s.authors     = ["haazime"]
   s.email       = ["h4zime@gmail.com"]
-  s.homepage    = "https://github.com/haazime"
+  s.homepage    = "https://github.com/haazime/are_you_sure"
   s.summary     = "Confirmation for Rails app"
   s.description = "This plug-in inserts a confirmation page before creation or updating action."
 
@@ -17,7 +17,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.0.2"
 
-  s.add_development_dependency "sqlite3"
   s.add_development_dependency "rspec-rails"
   s.add_development_dependency "capybara"
 end
