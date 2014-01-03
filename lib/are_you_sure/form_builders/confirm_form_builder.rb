@@ -40,6 +40,8 @@ module AreYouSure
         select_field_value(field_value, *options)
       when /check/
         check_field_value(field_value, *options)
+      when /text_area/
+        text_area_field_value(field_value, *options)
       else
         field_value
       end
@@ -61,6 +63,10 @@ module AreYouSure
 
     def check_field_value(checked, *options)
       checked ? options[1] || 'checked' : options[2] || ''
+    end
+
+    def text_area_field_value(text, *options)
+      text.gsub(/\r\n|\n|\r/, '<br />').html_safe
     end
   end
 end

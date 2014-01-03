@@ -7,7 +7,7 @@ feature 'Confirm Create' do
         Time.current,
         MFR.find_by(name: 'Leica'),
         Mount.find_by(name: 'Leica M'),
-        'Summilux', 35, 1.4, false, '1st'
+        'Summilux', 35, 1.4, false, "1st\n\nNot ASPH"
       )
       @lens.confirm
     end

@@ -34,6 +34,6 @@ module LensConfirmationHelper
   end
 
   def has_note?
-    has_content?(/Note\s+#{note}/)
+    has_content?(/Note\s+#{note.gsub(/\r\n|\n|\r/, '')}/)
   end
 end
