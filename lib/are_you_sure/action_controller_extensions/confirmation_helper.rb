@@ -14,5 +14,3 @@ module AreYouSure
     end
   end
 end
-
-ActionController::Base.send(:include, AreYouSure::ActionControllerExtensions::ConfirmationHelper)
