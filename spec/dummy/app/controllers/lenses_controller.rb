@@ -23,7 +23,7 @@ class LensesController < ApplicationController
 
   def update
     @lens = confirm_for Lens.find(params[:id])
-    if @lens.update_attributes_if_confirmed(lens_params)
+    if @lens.update_if_confirmed(lens_params)
       redirect_to lens_path(@lens)
     else
       render action: :edit

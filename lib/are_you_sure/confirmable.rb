@@ -11,6 +11,13 @@ module AreYouSure
       end
     end
 
+    def update_if_confirmed(attributes)
+      self.attributes = attributes
+      do_if_valid_and_confirmed do
+        self.update(attributes)
+      end
+    end
+
     def update_attributes_if_confirmed(attributes)
       self.attributes = attributes
       do_if_valid_and_confirmed do
