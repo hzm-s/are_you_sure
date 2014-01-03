@@ -2,7 +2,7 @@ module AreYouSure
   module Confirmable
 
     def confirmed=(confirmed)
-      @confirmed = confirmed
+      @are_you_sure_confirmed = confirmed
     end
 
     def save_if_confirmed
@@ -30,15 +30,11 @@ module AreYouSure
     end
 
     def confirmed?
-      @confirmed == 'confirmed'
+      @are_you_sure_confirmed == 'confirmed'
     end
 
-    def form_builder_class
-      if @confirmed.nil? or self.errors.any?
-        InputFormBuilder
-      else
-        ConfirmFormBuilder
-      end
+    def should_confirm?
+      @are_you_sure_confirmed.nil?
     end
 
   private
