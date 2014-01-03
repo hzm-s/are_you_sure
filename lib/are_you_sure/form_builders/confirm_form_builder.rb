@@ -3,7 +3,7 @@ module AreYouSure
 
     def confirmation(options={})
       confirmed(true) +
-      @template.content_tag(:p, options[:message] || I18n.t('helpers.submit.message_on_confirm', default: 'Are you sure?'))
+      @template.content_tag(:p, options[:message] || I18n.t('are_you_sure.confirmation_message', default: 'Are you sure?'))
     end
 
     def confirm_field(original_field, method, *options)
@@ -18,7 +18,7 @@ module AreYouSure
     end
 
     def cancel(value)
-      @template.link_to(value || I18n.t('helpers.submit.cancel', default: 'Cancel'), :back)
+      @template.link_to(value || I18n.t('are_you_sure.helpers.cancel', default: 'Cancel'), :back)
     end
 
     def method_missing(method, *args, &block)

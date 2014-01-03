@@ -7,7 +7,7 @@ module AreYouSure
 
     def submit_or_confirm(options={})
       value = options.delete(:confirm)
-      submit(value || I18n.t('helpers.submit.confirm', default: 'Confirm'), options)
+      submit(value || I18n.t('are_you_sure.helpers.confirm', default: 'Confirm'), options)
     end
 
     def method_missing(method, *args, &block)
