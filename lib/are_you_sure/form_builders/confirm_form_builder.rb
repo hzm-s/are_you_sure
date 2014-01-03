@@ -13,7 +13,8 @@ module AreYouSure
     end
 
     def submit_or_confirm(options={})
-      submit
+      values = [:create, :update, :confirm].inject([]) {|r,k| r << options.delete(k) }
+      submit @object.persisted? ? values[1] : values[0], options
     end
 
     def cancel(value=nil, options={})
