@@ -2,35 +2,43 @@
 
 This plug-in inserts a confirmation page before creation or updating action.
 
-And therefore, it is not necessary to add new routing(action) or to modify a model. 
+And therefore, it is not necessary to add new routing(action) or to modify a model.
 
 1. show form
-2. show confirm page (*)
+2. _show confirm page_
 3. create or update a model
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'are_you_sure'
+```bash
+gem 'are_you_sure'
+```
 
 And then execute:
 
-    $ bundle
+```bash
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install are_you_sure
+```bash
+$ gem install are_you_sure
+```
 
 ## Usage
 
 ### Controller
 
+Use __confirm_for__ with model construnction.
+
 ```ruby
 def new
   @todo = confirm_for Todo.new
 end
-    
+
 def create
   @todo = confirm_for Todo.new(todo_params)
   if @todo.save_if_confirmed
@@ -39,14 +47,14 @@ def create
     render action: :new
   end
 end
-    
+
 def edit
   @todo = confirm_for Todo.find(params[:id])
 end
-    
+
 def update
   @todo = confirm_for Todo.find(params[:id])
-  if @todo.update_attributes_if_confirmed(todo_params)
+  if @todo.update_if_confirmed(todo_params)
     redirect_to @todo
   else
     render action: :edit
@@ -56,10 +64,14 @@ end
 
 ### View
 
+Use __are_you_sure_form_for__ instead of form_for.
+Add __confirmation__.
+Use __[field]_or_confirm__ instead of [field] (FormHelper method).
+
 ```erb
 <%= are_you_sure_form_for @todo do |f| %>
   <%= f.confirmation message: 'CONFIRM MESSAGE' %>
-  
+
   <% if @todo.errors.any? %>
     <div id="errorExplanation">
       <ul>
@@ -69,7 +81,7 @@ end
       </ul>
     </div>
   <% end %>
-  
+
   <div>
     <%= f.label :deadline %>:
     <%= f.datetime_select_or_confirm :deadline, { order: [:year, :month, :day], use_month_numbers: true } %>
