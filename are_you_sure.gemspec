@@ -10,8 +10,8 @@ Gem::Specification.new do |s|
   s.authors     = ["haazime"]
   s.email       = ["h4zime@gmail.com"]
   s.homepage    = "https://github.com/haazime"
-  s.summary     = "Add confirmation to Rails"
-  s.description = ""
+  s.summary     = "Confirmation for Rails app"
+  s.description = "This plug-in inserts a confirmation page before creation or updating action."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
 
