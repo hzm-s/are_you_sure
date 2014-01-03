@@ -1,5 +1,7 @@
 # AreYouSure
 
+[![Code Climate](https://codeclimate.com/github/haazime/are_you_sure.png)](https://codeclimate.com/github/haazime/are_you_sure)
+
 This plug-in inserts a confirmation page before creation or updating action.
 
 And therefore, it is not necessary to add new routing(action) or to modify a model.
