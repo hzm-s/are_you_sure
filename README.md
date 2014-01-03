@@ -64,10 +64,6 @@ end
 
 ### View
 
-Use __are_you_sure_form_for__ instead of form_for.
-Add __confirmation__.
-Use __[field]_or_confirm__ instead of [field] (FormHelper method).
-
 ```erb
 <%= are_you_sure_form_for @todo do |f| %>
   <%= f.confirmation message: 'CONFIRM MESSAGE' %>
