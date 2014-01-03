@@ -43,6 +43,7 @@
     <%= f.text_area_or_confirm :note, { class: :text_area } %>
   </div>
   <div>
-    <%= f.submit_or_confirm confirm: '確認画面へ', cancel: '戻る', class: :button %>
+    <%= f.submit_or_confirm confirm: '確認画面へ', class: :button %>
+    <%= f.cancel '戻る', class: :button %>
   </div>
 <% end -%>

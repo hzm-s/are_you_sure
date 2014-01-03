@@ -10,6 +10,10 @@ module AreYouSure
       submit(value || I18n.t('are_you_sure.helpers.confirm', default: 'Confirm'), options)
     end
 
+    def cancel(value=nil, options={})
+      ''
+    end
+
     def method_missing(method, *args, &block)
       do_if_respond_to_original_method(method) do |original_method|
         send(original_method, *args, &block)

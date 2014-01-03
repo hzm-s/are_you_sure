@@ -13,11 +13,10 @@ module AreYouSure
     end
 
     def submit_or_confirm(options={})
-      cancel_value = options.delete(:cancel)
-      submit + cancel(cancel_value)
+      submit
     end
 
-    def cancel(value)
+    def cancel(value=nil, options={})
       @template.link_to(value || I18n.t('are_you_sure.helpers.cancel', default: 'Cancel'), :back)
     end
 
