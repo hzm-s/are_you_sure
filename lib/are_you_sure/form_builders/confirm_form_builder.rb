@@ -12,7 +12,7 @@ module AreYouSure
       @template.hidden_field(@object_name, method)
     end
 
-    def submit_or_confirm(options)
+    def submit_or_confirm(options={})
       cancel_value = options.delete(:cancel)
       submit + cancel(cancel_value)
     end
