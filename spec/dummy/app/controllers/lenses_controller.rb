@@ -5,7 +5,7 @@ class LensesController < ApplicationController
   end
 
   def new
-    @lens = confirm_for Lens.new
+    @lens = fill_confirmed Lens.new
   end
 
   def create
@@ -18,7 +18,7 @@ class LensesController < ApplicationController
   end
 
   def edit
-    @lens = confirm_for Lens.find(params[:id])
+    @lens = fill_confirmed Lens.find(params[:id])
   end
 
   def update

@@ -38,5 +38,13 @@ feature 'Commit Update' do
     background { lens.cancel }
 
     scenario { expect(lens).to have_edit_form }
+    scenario { expect(lens).to have_filled_registered_at }
+    scenario { expect(lens).to have_filled_mfr_id }
+    scenario { expect(lens).to have_filled_mount_id }
+    scenario { expect(lens).to have_filled_name }
+    scenario { expect(lens).to have_filled_mm }
+    scenario { expect(lens).to have_filled_f }
+    scenario { expect(lens).to have_filled_close_up }
+    scenario { expect(lens).to have_filled_note }
   end
 end
