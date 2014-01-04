@@ -41,11 +41,11 @@ module AreYouSure
   private
 
     def do_if_can_persist
+      forgot_attributes
       return false unless self.valid?
       memorize_attributes
       return false unless confirmed?
       yield
-      forgot_attributes
     end
 
     def memorize_attributes
