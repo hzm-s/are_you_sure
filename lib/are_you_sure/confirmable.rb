@@ -8,6 +8,7 @@ module AreYouSure
 
     def fill_confirmed_attributes
       self.attributes = @are_you_sure_session[:model_attributes]
+      clear_attributes_cache
     end
 
     def save_if_confirmed
@@ -41,18 +42,16 @@ module AreYouSure
     def confirm_with_persist
       return false unless self.valid?
       if confirmed?
-        yield.tap {|result| memorize_attributes(result) }
+        clear_attributes_cache
+        yield
       else
-        false.tap {|result| memorize_attributes(result) }
+        @are_you_sure_session[:model_attributes] = self.attributes
+        false
       end
     end
 
-    def memorize_attributes(result)
-      if result
-        @are_you_sure_session[:model_attributes] = nil
-      else
-        @are_you_sure_session[:model_attributes] = self.attributes
-      end
+    def clear_attributes_cache
+      @are_you_sure_session[:model_attributes] = nil
     end
   end
 end
