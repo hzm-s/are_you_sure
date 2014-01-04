@@ -1,22 +1,27 @@
 module AreYouSure
   module Confirmable
 
-    def prepare_confirmation(confirmed)
+    def prepare_confirmation(confirmed, session)
       @are_you_sure_confirmed = confirmed
+      @are_you_sure_session = session
+    end
+
+    def fill_confirmed_attributes
+      self.attributes = @are_you_sure_session[:model_attributes]
     end
 
     def save_if_confirmed
-      do_if_can_persist { self.save }
+      confirm_with_persist { self.save }
     end
 
     def update_if_confirmed(attributes)
       self.attributes = attributes
-      do_if_can_persist { self.update(attributes) }
+      confirm_with_persist { self.update(attributes) }
     end
 
     def update_attributes_if_confirmed(attributes)
       self.attributes = attributes
-      do_if_can_persist { self.update_attributes(attributes) }
+      confirm_with_persist { self.update_attributes(attributes) }
     end
 
     def update_attribute_if_confirmed(name, value)
@@ -33,10 +38,21 @@ module AreYouSure
 
   private
 
-    def do_if_can_persist
+    def confirm_with_persist
       return false unless self.valid?
-      return false unless confirmed?
-      yield
+      if confirmed?
+        yield.tap {|result| memorize_attributes(result) }
+      else
+        false.tap {|result| memorize_attributes(result) }
+      end
+    end
+
+    def memorize_attributes(result)
+      if result
+        @are_you_sure_session[:model_attributes] = nil
+      else
+        @are_you_sure_session[:model_attributes] = self.attributes
+      end
     end
   end
 end

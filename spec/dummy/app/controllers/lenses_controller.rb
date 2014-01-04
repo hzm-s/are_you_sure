@@ -17,7 +17,6 @@ class LensesController < ApplicationController
     if @lens.save_if_confirmed
       redirect_to @lens
     else
-      memorize_confirmed(@lens)
       render action: :new
     end
   end
@@ -27,7 +26,6 @@ class LensesController < ApplicationController
     if @lens.update_if_confirmed(lens_params)
       redirect_to @lens
     else
-      memorize_confirmed(@lens)
       render action: :edit
     end
   end
