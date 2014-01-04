@@ -15,7 +15,9 @@ module AreYouSure
     end
 
     def retrieve
-      @cache.delete(KEY)
+      @cache[KEY].tap do
+        @cache[KEY] = nil
+      end
     end
   end
 end
