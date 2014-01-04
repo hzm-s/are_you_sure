@@ -1,6 +1,6 @@
 class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :close_up, :note, :id)
   extend Capybara::DSL
-  include LensInputtable
+  include LensFormHelper
   include LensConfirmationHelper
 
   def self.edit
@@ -22,7 +22,7 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
 
   def initialize(*args)
     super
-    visit "lenses/new"
+    self.class.visit "lenses/new"
   end
 
   def registered_datetime
@@ -31,29 +31,5 @@ class LensOnPage < Struct.new(:registered_at, :mfr, :mount, :name, :mm, :f, :clo
 
   def close_up_state
     close_up ? 'available' : 'unavailable'
-  end
-
-  def has_error_on?(name)
-    all('li').collect {|li| li.text }.any? {|t| t =~ /#{name}/i }
-  end
-
-  def create
-    click_button '作成する'
-  end
-
-  def update
-    click_button '変更する'
-  end
-
-  def cancel
-    click_link '戻る'
-  end
-
-  def has_new_form?
-    has_css?('form#new_lens')
-  end
-
-  def has_edit_form?
-    has_css?("form#edit_lens_#{id}")
   end
 end
