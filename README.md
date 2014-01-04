@@ -36,7 +36,11 @@ $ gem install are_you_sure
 
 ```ruby
 def new
-  @todo = confirm_for Todo.new
+  @todo = fill_confirmed Todo.new
+end
+
+def edit
+  @todo = fill_confirmed Todo.find(params[:id])
 end
 
 def create
@@ -46,10 +50,6 @@ def create
   else
     render action: :new
   end
-end
-
-def edit
-  @todo = confirm_for Todo.find(params[:id])
 end
 
 def update
