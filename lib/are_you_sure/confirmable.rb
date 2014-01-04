@@ -46,6 +46,7 @@ module AreYouSure
       memorize_attributes
       return false unless confirmed?
       yield
+      forgot_attributes
     end
 
     def memorize_attributes
