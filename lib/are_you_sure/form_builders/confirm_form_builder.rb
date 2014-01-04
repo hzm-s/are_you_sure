@@ -18,7 +18,10 @@ module AreYouSure
     end
 
     def cancel(value=nil, options={})
-      @template.link_to(value || I18n.t('are_you_sure.helpers.cancel', default: 'Cancel'), :back)
+      @template.link_to(
+        value || I18n.t('are_you_sure.helpers.cancel', default: 'Cancel'),
+        @template.polymorphic_path(@object, action: @object.persisted? ? :edit : :new)
+      )
     end
 
     def method_missing(method, *args, &block)
