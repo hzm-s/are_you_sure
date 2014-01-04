@@ -19,7 +19,9 @@ module AreYouSure
     end
 
     def retrieve
-      @cache[KEY]
+      @cache[KEY].tap do
+        self.clear
+      end
     end
   end
 end
