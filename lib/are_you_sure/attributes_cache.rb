@@ -14,10 +14,12 @@ module AreYouSure
       @cache.has_key?(KEY)
     end
 
+    def clear
+      @cache[KEY] = nil
+    end
+
     def retrieve
-      @cache[KEY].tap do
-        @cache[KEY] = nil
-      end
+      @cache[KEY]
     end
   end
 end

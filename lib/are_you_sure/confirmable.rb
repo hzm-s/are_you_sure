@@ -45,10 +45,15 @@ module AreYouSure
       memorize_attributes
       return false unless confirmed?
       yield
+      forgot_attributes
     end
 
     def memorize_attributes
       @are_you_sure_cache.store(self.attributes)
+    end
+
+    def forgot_attributes
+      @are_you_sure_cache.clear
     end
   end
 end
