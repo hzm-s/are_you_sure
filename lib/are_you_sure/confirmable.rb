@@ -1,15 +1,8 @@
 module AreYouSure
   module Confirmable
 
-    def prepare_confirmation(confirmed, cache)
+    def prepare_confirmation(confirmed)
       @are_you_sure_confirmed = confirmed
-      @are_you_sure_cache = cache
-    end
-
-    def fill_attributes
-      if @are_you_sure_cache.stored?
-        self.attributes = @are_you_sure_cache.retrieve
-      end
     end
 
     def save_if_confirmed
@@ -41,20 +34,9 @@ module AreYouSure
   private
 
     def do_if_can_persist
-      forgot_attributes
       return false unless self.valid?
-      memorize_attributes
       return false unless confirmed?
       yield
-      forgot_attributes
-    end
-
-    def memorize_attributes
-      @are_you_sure_cache.store(self.attributes)
-    end
-
-    def forgot_attributes
-      @are_you_sure_cache.clear
     end
   end
 end

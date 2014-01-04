@@ -8,24 +8,26 @@ class LensesController < ApplicationController
     @lens = fill_confirmed Lens.new
   end
 
+  def edit
+    @lens = fill_confirmed Lens.find(params[:id])
+  end
+
   def create
     @lens = confirm_for Lens.new(lens_params)
     if @lens.save_if_confirmed
-      redirect_to lens_path(@lens)
+      redirect_to @lens
     else
+      memorize_confirmed(@lens)
       render action: :new
     end
-  end
-
-  def edit
-    @lens = fill_confirmed Lens.find(params[:id])
   end
 
   def update
     @lens = confirm_for Lens.find(params[:id])
     if @lens.update_if_confirmed(lens_params)
-      redirect_to lens_path(@lens)
+      redirect_to @lens
     else
+      memorize_confirmed(@lens)
       render action: :edit
     end
   end
