@@ -71,7 +71,7 @@ end
   <% if @todo.errors.any? %>
     <div id="errorExplanation">
       <ul>
-      <% @todo.errors.full_messages do |msg| %>
+      <% @todo.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
