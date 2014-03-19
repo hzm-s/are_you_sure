@@ -46,7 +46,7 @@ end
 def create
   @todo = confirm_for Todo.new(todo_params)
   if @todo.save_if_confirmed
-    redirecto_to @todo
+    redirect_to @todo
   else
     render action: :new
   end
