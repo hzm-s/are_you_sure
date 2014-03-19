@@ -45,5 +45,6 @@
   <div>
     <%= f.submit_or_confirm create: '作成する', update: '変更する', confirm: '確認画面へ', class: :button %>
     <%= f.cancel '戻る', class: :button %>
+    <%= f.cancel '前のページへ', to: :back, class: :button %>
   </div>
 <% end -%>
