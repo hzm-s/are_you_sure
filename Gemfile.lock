@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    are_you_sure (0.1.0)
+    are_you_sure (0.2.0)
       rails (~> 4.0.2)
 
 GEM

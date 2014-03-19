@@ -42,6 +42,10 @@ module LensFormHelper
     click_link '戻る'
   end
 
+  def cancel_by_back
+    click_link '前のページへ'
+  end
+
   def has_filled_registered_at?
     find('#lens_registered_at_1i').value == registered_at.year.to_s &&
     find('#lens_registered_at_2i').value == registered_at.month.to_s &&
