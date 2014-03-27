@@ -46,6 +46,8 @@ module AreYouSure
         check_field_value(field_value, *options)
       when /text_area/
         text_area_field_value(field_value, *options)
+      when /password/
+        '********'
       else
         field_value
       end
