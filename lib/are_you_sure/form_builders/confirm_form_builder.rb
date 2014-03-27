@@ -46,6 +46,8 @@ module AreYouSure
         check_field_value(field_value, *options)
       when /text_area/
         text_area_field_value(field_value, *options)
+      when /password/
+        password_field_value(field_value, *options)
       else
         field_value
       end
@@ -71,6 +73,10 @@ module AreYouSure
 
     def text_area_field_value(text, *options)
       text.gsub(/\r\n|\n|\r/, '<br />').html_safe
+    end
+
+    def password_field_value(password, *options)
+      '********'
     end
   end
 end
