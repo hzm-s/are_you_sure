@@ -63,7 +63,7 @@ module AreYouSure
     end
 
     def select_field_value(selected, *options)
-      return '' unless selected
+      return '' if selected.nil?
       options.flatten.each_slice(2).to_a.detect {|i| i[1] == selected }[0]
     end
 
