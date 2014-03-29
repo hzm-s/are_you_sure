@@ -54,7 +54,7 @@ module AreYouSure
     end
 
     def collection_field_value(selected, choices, value_method, text_method, *options)
-      return '' unless selected
+      return '' if selected.nil?
       choices.detect {|c| c.send(value_method) == selected }.send(text_method)
     end
 
