@@ -21,7 +21,8 @@ module AreYouSure
       cancel_path = options.delete(:to) || @template.polymorphic_path(@object, action: @object.persisted? ? :edit : :new)
       @template.link_to(
         value || I18n.t('are_you_sure.helpers.cancel', default: 'Cancel'),
-        cancel_path
+        cancel_path,
+        options
       )
     end
 
