@@ -16,7 +16,7 @@ module AreYouSure
     end
 
     def update_if_confirmed(attributes)
-      self.attributes = attributes
+      self.attributes = attributes unless confirmed?
       confirm_with_persist { self.update(attributes) }
     end
 
