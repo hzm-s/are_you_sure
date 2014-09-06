@@ -5,9 +5,9 @@ module AreYouSure
     def confirm_for(model)
       model.extend(described_class).tap do |m|
         m.prepare_confirmation(confirmed, session)
-        m.stub(:valid?) { valid }
-        m.stub(:save) { save }
-        m.stub(:update) { update }
+        allow(m).to receive(:valid?) { valid }
+        allow(m).to receive(:save) { save }
+        allow(m).to receive(:update) { update }
       end
     end
 
