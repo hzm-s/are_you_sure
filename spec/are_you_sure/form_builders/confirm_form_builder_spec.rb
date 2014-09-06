@@ -43,7 +43,7 @@ module AreYouSure
       end
 
       context "when resource is persisted" do
-        before { resource.stub(:persisted?) { true } }
+        before { allow(resource).to receive(:persisted?) { true } }
 
         context "given no options" do
           let(:options) { {} }
@@ -59,7 +59,7 @@ module AreYouSure
     describe "#cancel" do
       subject { f.cancel(value, options) }
 
-      before { helper.stub(:polymorphic_path) { "cancel_path" } }
+      before { allow(helper).to receive(:polymorphic_path) { "cancel_path" } }
 
       context "given no value no options" do
         let(:value) { nil }

@@ -3,7 +3,12 @@ require 'ostruct'
 
 class TestHelper < ActionView::Base; end
 
-class Choice < Struct.new(:value, :text)
+class Choice
+  attr_accessor :value, :text
+
+  def initialize(value, text)
+    @value, @text = value, text
+  end
 end
 
 module AreYouSure
@@ -49,9 +54,6 @@ module AreYouSure
       context "when single checked" do
         before { model.choice = choices[0].value }
         it { expect(subject).to include("<p>#{choices[0].text}</p>") }
-      end
-
-      pending "when multi checked" do
       end
 
       context "when true selected" do
