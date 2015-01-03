@@ -1,13 +1,9 @@
 require 'spec_helper'
-require 'ostruct'
-
-class TestHelper < ActionView::Base; end
 
 module AreYouSure
   describe ConfirmFormBuilder do
-    let(:helper) { TestHelper.new }
-    let(:model) { OpenStruct.new }
-    let(:f) { described_class.new(:resource, model, helper, {}) }
+    let(:model) { open_model }
+    let(:f) { described_class.new(:resource, model, template, {}) }
 
     describe "#check_box" do
       context 'given NO any options' do

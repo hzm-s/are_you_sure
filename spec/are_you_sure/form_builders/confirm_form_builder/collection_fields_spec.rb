@@ -1,7 +1,4 @@
 require 'spec_helper'
-require 'ostruct'
-
-class TestHelper < ActionView::Base; end
 
 class Choice
   attr_accessor :value, :text
@@ -13,9 +10,8 @@ end
 
 module AreYouSure
   describe ConfirmFormBuilder do
-    let(:helper) { TestHelper.new }
-    let(:model) { OpenStruct.new }
-    let(:f) { described_class.new(:resource, model, helper, {}, nil) }
+    let(:model) { open_model }
+    let(:f) { described_class.new(:resource, model, template, {}) }
 
     let(:choices) do
       [
