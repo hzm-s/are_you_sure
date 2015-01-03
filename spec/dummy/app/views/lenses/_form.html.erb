@@ -36,7 +36,7 @@
   </div>
   <div>
     <%= f.label :close_up %>
-    <%= f.check_box_or_confirm :close_up, { class: :check }, 'available', 'unavailable' %>
+    <%= f.check_box_or_confirm :close_up, { class: :check, display: ['available', 'unavailable'] } %>
   </div>
   <div>
     <%= f.label :note %>

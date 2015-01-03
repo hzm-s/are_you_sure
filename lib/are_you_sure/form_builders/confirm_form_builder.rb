@@ -69,7 +69,8 @@ module AreYouSure
     end
 
     def check_field_value(checked, *options)
-      checked ? options[1] || 'checked' : options[2] || ''
+      display = (options[0] || {}).fetch(:display, ['checked', ''])
+      checked ? display[0] : display[1]
     end
 
     def text_area_field_value(text, *options)
