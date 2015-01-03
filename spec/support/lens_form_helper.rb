@@ -14,6 +14,7 @@ module LensFormHelper
     fill_in 'lens[name]', with: name
     fill_in 'lens[mm]',   with: mm
     fill_in 'lens[f]',    with: f
+    check 'lens_close_up' if close_up
     fill_in 'lens[note]', with: note
     click_button '確認画面へ'
   end

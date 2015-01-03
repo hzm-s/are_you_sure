@@ -1,28 +1,27 @@
 require 'spec_helper'
 
-class TestHelper < ActionView::Base; end
-
 module AreYouSure
   describe ConfirmFormBuilder do
-    let(:helper) { TestHelper.new }
     let(:resource) { Lens.new }
-    let(:f) { described_class.new(:lens, resource, helper, {}, nil) }
+    let(:f) { described_class.new(:lens, resource, template, {}) }
 
     describe "#confirmation" do
       subject { f.confirmation(options) }
 
       context "given no options" do
         let(:options) { {} }
-        it { expect(subject).to eq(
-          "<input id=\"confirmed\" name=\"confirmed\" type=\"hidden\" value=\"confirmed\" /><p>Are you sure?</p>"
-        ) }
+        it { expect(subject).to match(/type="hidden"/) }
+        it { expect(subject).to match(/name="confirmed"/) }
+        it { expect(subject).to match(/value="confirmed"/) }
+        it { expect(subject).to match(Regexp.escape('<p>Are you sure?</p>')) }
       end
 
       context "given message" do
         let(:options) { { message: 'OK?' } }
-        it { expect(subject).to eq(
-          "<input id=\"confirmed\" name=\"confirmed\" type=\"hidden\" value=\"confirmed\" /><p>OK?</p>"
-        ) }
+        it { expect(subject).to match(/type="hidden"/) }
+        it { expect(subject).to match(/name="confirmed"/) }
+        it { expect(subject).to match(/value="confirmed"/) }
+        it { expect(subject).to match(Regexp.escape('<p>OK?</p>')) }
       end
     end
 
@@ -34,11 +33,13 @@ module AreYouSure
       context "when resource is not persisted" do
         context "given no options" do
           let(:options) { {} }
-          it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"Create a Lens\" />") }
+          it { expect(subject).to match(/type="submit"/) }
+          it { expect(subject).to match(/value="Create a Lens"/) }
         end
 
         context "given :create option" do
-          it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"create\" />") }
+          it { expect(subject).to match(/type="submit"/) }
+          it { expect(subject).to match(/value="create"/) }
         end
       end
 
@@ -47,11 +48,13 @@ module AreYouSure
 
         context "given no options" do
           let(:options) { {} }
-          it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"Update a Lens\" />") }
+          it { expect(subject).to match(/type="submit"/) }
+          it { expect(subject).to match(/value="Update a Lens"/) }
         end
 
         context "given :create option" do
-          it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"update\" />") }
+          it { expect(subject).to match(/type="submit"/) }
+          it { expect(subject).to match(/value="update"/) }
         end
       end
     end
@@ -59,7 +62,7 @@ module AreYouSure
     describe "#cancel" do
       subject { f.cancel(value, options) }
 
-      before { allow(helper).to receive(:polymorphic_path) { "cancel_path" } }
+      before { allow(template).to receive(:polymorphic_path) { "cancel_path" } }
 
       context "given no value no options" do
         let(:value) { nil }

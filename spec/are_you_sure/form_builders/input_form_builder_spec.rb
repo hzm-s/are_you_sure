@@ -6,11 +6,12 @@ module AreYouSure
   describe InputFormBuilder do
     let(:helper) { TestHelper.new }
     let(:resource) { Lens.new }
-    let(:f) { described_class.new(:lens, resource, helper, {}, nil) }
+    let(:f) { described_class.new(:lens, resource, helper, {}) }
 
     describe "#confirmation" do
       subject { f.confirmation }
-      it { expect(subject).to eq("<input id=\"confirmed\" name=\"confirmed\" type=\"hidden\" value=\"\" />") }
+      it { expect(subject).to match(/name="confirmed"/) }
+      it { expect(subject).to match(/type="hidden"/) }
     end
 
     describe "#submit_or_confirm" do
@@ -18,12 +19,14 @@ module AreYouSure
 
       context "given no options" do
         let(:options) { {} }
-        it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"Confirm\" />") }
+        it { expect(subject).to match(/type="submit"/) }
+        it { expect(subject).to match(/value="Confirm"/) }
       end
 
       context "given options" do
         let(:options) { { confirm: 'confirm' } }
-        it { expect(subject).to eq("<input name=\"commit\" type=\"submit\" value=\"confirm\" />") }
+        it { expect(subject).to match(/type="submit"/) }
+        it { expect(subject).to match(/value="confirm"/) }
       end
     end
 
@@ -34,7 +37,9 @@ module AreYouSure
 
     describe "#text_field" do
       subject { f.text_field :name }
-      it { expect(subject).to eq("<input id=\"lens_name\" name=\"lens[name]\" type=\"text\" />") }
+      it { expect(subject).to match(/id="lens_name"/) }
+      it { expect(subject).to match(/name="lens\[name\]"/) }
+      it { expect(subject).to match(/type="text"/) }
     end
   end
 end
