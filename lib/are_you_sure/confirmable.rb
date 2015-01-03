@@ -7,6 +7,7 @@ module AreYouSure
     end
 
     def fill_confirmed_attributes
+      return unless @are_you_sure_session[:model_attributes]
       self.attributes = @are_you_sure_session[:model_attributes]
       clear_attributes_cache
     end
