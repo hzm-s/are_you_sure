@@ -9,7 +9,7 @@ def open_model
 end
 
 def template
-  ActionView::Base.new
+  @_template ||= ActionView::Base.new
 end
 
 # Requires supporting ruby files with custom matchers and macros, etc,

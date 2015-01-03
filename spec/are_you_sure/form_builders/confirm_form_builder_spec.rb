@@ -1,12 +1,9 @@
 require 'spec_helper'
 
-class TestHelper < ActionView::Base; end
-
 module AreYouSure
   describe ConfirmFormBuilder do
-    let(:helper) { TestHelper.new }
     let(:resource) { Lens.new }
-    let(:f) { described_class.new(:lens, resource, helper, {}, nil) }
+    let(:f) { described_class.new(:lens, resource, template, {}) }
 
     describe "#confirmation" do
       subject { f.confirmation(options) }
@@ -59,7 +56,7 @@ module AreYouSure
     describe "#cancel" do
       subject { f.cancel(value, options) }
 
-      before { allow(helper).to receive(:polymorphic_path) { "cancel_path" } }
+      before { allow(template).to receive(:polymorphic_path) { "cancel_path" } }
 
       context "given no value no options" do
         let(:value) { nil }

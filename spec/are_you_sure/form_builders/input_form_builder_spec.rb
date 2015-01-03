@@ -6,7 +6,7 @@ module AreYouSure
   describe InputFormBuilder do
     let(:helper) { TestHelper.new }
     let(:resource) { Lens.new }
-    let(:f) { described_class.new(:lens, resource, helper, {}, nil) }
+    let(:f) { described_class.new(:lens, resource, helper, {}) }
 
     describe "#confirmation" do
       subject { f.confirmation }
