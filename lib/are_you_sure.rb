@@ -1,5 +1,6 @@
 require 'are_you_sure/version'
 require 'are_you_sure/confirmable'
+require 'are_you_sure/confirmation'
 require 'are_you_sure/railtie'
 
 module AreYouSure
