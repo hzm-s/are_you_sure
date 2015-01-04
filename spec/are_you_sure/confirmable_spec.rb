@@ -3,12 +3,10 @@ require 'spec_helper'
 module AreYouSure
   describe Confirmable do
     def confirm_for(model)
-      model.extend(described_class).tap do |m|
-        m.prepare_confirmation(confirmed, session)
-        allow(m).to receive(:valid?) { valid }
-        allow(m).to receive(:save) { save }
-        allow(m).to receive(:update) { update }
-      end
+      allow(model).to receive(:valid?) { valid }
+      allow(model).to receive(:save) { save }
+      allow(model).to receive(:update) { update }
+      Confirmation.new(model, session, confirmed)
     end
 
     let(:session) { {} }

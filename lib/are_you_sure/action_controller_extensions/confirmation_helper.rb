@@ -3,9 +3,7 @@ module AreYouSure
     module ConfirmationHelper
 
       def confirm_for(model)
-        Confirmation.new(model).tap do |obj|
-          obj.prepare_confirmation(param_confirmed, session)
-        end
+        Confirmation.new(model, session, param_confirmed)
       end
 
       def fill_confirmed(model)

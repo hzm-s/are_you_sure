@@ -1,17 +1,6 @@
 module AreYouSure
   module Confirmable
 
-    def prepare_confirmation(confirmed, session)
-      @are_you_sure_confirmed = confirmed
-      @are_you_sure_session = session
-    end
-
-    def fill_confirmed_attributes
-      return unless @are_you_sure_session[:model_attributes]
-      self.attributes = @are_you_sure_session[:model_attributes]
-      clear_attributes_cache
-    end
-
     def save_if_confirmed
       confirm_with_persist { self.save }
     end
@@ -31,11 +20,11 @@ module AreYouSure
     end
 
     def confirmed?
-      @are_you_sure_confirmed == 'confirmed'
+      confirmed == 'confirmed'
     end
 
     def should_confirm?
-      @are_you_sure_confirmed.nil?
+      confirmed.nil?
     end
 
   private
@@ -46,13 +35,9 @@ module AreYouSure
         clear_attributes_cache
         yield
       else
-        @are_you_sure_session[:model_attributes] = self.attributes
+        session_store[:model_attributes] = self.attributes
         false
       end
-    end
-
-    def clear_attributes_cache
-      @are_you_sure_session[:model_attributes] = nil
     end
   end
 end
